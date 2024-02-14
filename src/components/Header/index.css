@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   background-color: #202020;
+  position:sticky;top:0;
 }
 
 .nav-content {

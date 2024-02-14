@@ -40,43 +40,6 @@ const FiltersGroup = props => {
     )
   }
 
-  const renderTypeOfEmployment = () => {
-    const {employmentTypesList} = props
-    return (
-      <div className="employment-type-container">
-        <h1 className="employment-type-heading"> Type of Employment</h1>
-        <ul className="employee-type-list-container">
-          {employmentTypesList.map(eachEmployeeType => {
-            const {changeEmployeeList} = props
-            const onSelectEmployeeType = event => {
-              changeEmployeeList(event.target.value)
-            }
-            return (
-              <li
-                className="employee-item"
-                key={eachEmployeeType.employmentTypeId}
-                onChange={onSelectEmployeeType}
-              >
-                <input
-                  type="checkbox"
-                  id={eachEmployeeType.employmentTypeId}
-                  className="check-input"
-                  value={eachEmployeeType.employmentTypeId}
-                />
-                <label
-                  htmlFor={eachEmployeeType.employmentTypeId}
-                  className="check-label"
-                >
-                  {eachEmployeeType.label}
-                </label>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-    )
-  }
-
   const renderSalaryRange = () => {
     const {salaryRangesList} = props
     return (
@@ -114,6 +77,80 @@ const FiltersGroup = props => {
     )
   }
 
+  const renderTypeOfEmployment = () => {
+    const {employmentTypesList} = props
+    return (
+      <div className="employment-type-container">
+        <h1 className="employment-type-heading"> Type of Employment</h1>
+        <ul className="employee-type-list-container">
+          {employmentTypesList.map(eachEmployeeType => {
+            const {changeEmployeeList} = props
+            const onSelectEmployeeType = event => {
+              changeEmployeeList(event.target.value)
+            }
+            return (
+              <li
+                className="employee-item"
+                key={eachEmployeeType.employmentTypeId}
+                onChange={onSelectEmployeeType}
+              >
+                <input
+                  type="checkbox"
+                  id={eachEmployeeType.employmentTypeId}
+                  className="check-input"
+                  value={eachEmployeeType.employmentTypeId}
+                />
+                <label
+                  htmlFor={eachEmployeeType.employmentTypeId}
+                  className="check-label"
+                >
+                  {eachEmployeeType.label}
+                </label>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    )
+  }
+
+  const renderLocation = () => {
+    const {locationList} = props
+    return (
+      <div className="salary-range-container">
+        <h1 className="salary-range-heading">Location</h1>
+        <ul className="salary-range-list-container">
+          {locationList.map(eachLocation => {
+            const {changeLocationList} = props
+            const onClickLocation = e => {
+              changeLocationList(e.target.value)
+            }
+            return (
+              <li
+                className="salary-item"
+                key={eachLocation.locationId}
+                onChange={onClickLocation}
+              >
+                <input
+                  type="checkbox"
+                  id={eachLocation.locationId}
+                  className="check-input"
+                  value={eachLocation.label}
+                />
+                <label
+                  htmlFor={eachLocation.locationId}
+                  className="check-label"
+                >
+                  {eachLocation.label}
+                </label>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    )
+  }
+
   return (
     <div className="filters-group-container">
       {renderSearchInput()}
@@ -122,6 +159,8 @@ const FiltersGroup = props => {
       {renderTypeOfEmployment()}
       <hr className="horizontal-line" />
       {renderSalaryRange()}
+      <hr className="horizontal-line" />
+      {renderLocation()}
     </div>
   )
 }

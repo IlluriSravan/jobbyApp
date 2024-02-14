@@ -1,0 +1,31 @@
+.description-visit-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.visit-heading,
+.visit-icon {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
+.skills-heading {
+  color: white;
+}
+.skills-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: white;
+  list-style-type: none;
+}
+
+.life-at-company-heading,
+.life-at-company-description {
+  color: white;
+}
+.similar-jobs-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

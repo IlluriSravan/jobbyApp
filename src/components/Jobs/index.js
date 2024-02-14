@@ -27,6 +27,29 @@ const employmentTypesList = [
   },
 ]
 
+const locationList = [
+  {
+    label: 'Hyderabad',
+    locationId: 'HYDERABAD',
+  },
+  {
+    label: 'Mumbai',
+    locationId: 'MUMBAI',
+  },
+  {
+    label: 'Bangalore',
+    locationId: 'BANGALORE',
+  },
+  {
+    label: 'Chennai',
+    locationId: 'CHENNAI',
+  },
+  {
+    label: 'Delhi',
+    locationId: 'DELHI',
+  },
+]
+
 const salaryRangesList = [
   {
     salaryRangeId: '1000000',
@@ -60,6 +83,7 @@ class Jobs extends Component {
     employeeType: [],
     minimumSalary: 0,
     searchInput: '',
+    location: [],
   }
 
   componentDidMount() {
@@ -194,6 +218,29 @@ class Jobs extends Component {
     )
   }
 
+  renderLocation = () => {
+    const {location, jobsList} = this.state
+    console.log('location', location)
+    const filteredJobs = []
+    location.forEach(eac => {
+      const filtered = jobsList.filter(each => each.location === eac)
+      filtered.forEach(each => {
+        filteredJobs.push(each)
+      })
+    })
+    console.log('Top', filteredJobs)
+    this.setState({jobsList: filteredJobs})
+    console.log('jobs', jobsList)
+  }
+
+  changeLocationList = location => {
+    console.log('loc', location)
+    this.setState(
+      prev => ({location: [...prev.location, location]}),
+      this.renderLocation,
+    )
+  }
+
   render() {
     const {searchInput} = this.state
     return (
@@ -202,6 +249,7 @@ class Jobs extends Component {
         <div className="jobs-container">
           <div className="jobs-content">
             <FiltersGroup
+              locationList={locationList}
               employmentTypesList={employmentTypesList}
               salaryRangesList={salaryRangesList}
               changeSearchInput={this.changeSearchInput}
@@ -209,6 +257,7 @@ class Jobs extends Component {
               getJobs={this.getJobs}
               changeSalary={this.changeSalary}
               changeEmployeeList={this.changeEmployeeList}
+              changeLocationList={this.changeLocationList}
             />
             <div className="search-input-jobs-list-container">
               <div className="search-input-container-desktop">
